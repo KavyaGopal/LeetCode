@@ -1,9 +1,10 @@
 class Solution {
     public int heightChecker(int[] heights) {
         int[] expected = new int[heights.length];
-        for (int i = 0; i < heights.length; i++) {
-            expected[i] = heights[i];
-        }
+        expected = heights.clone();
+        // for (int i = 0; i < heights.length; i++) {
+        //     expected[i] = heights[i];
+        // }
         Arrays.sort(expected);
         // int index = 0, count = 0;
         int count=0;
