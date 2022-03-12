@@ -31,13 +31,32 @@
 
 // Start from the end of array and check if that element is greater than the first one. If so, add that to the new array.
 // This works since there is increasing -> decreasing -> increasing order in array
+// class Solution {
+//     public int[] sortedSquares(int[] nums) {
+//         int i = 0, j = nums.length - 1;
+//         for (int k = 0; k < nums.length; k++) {
+//             nums[k] = nums[k]*nums[k];
+//         }
+//         Arrays.sort(nums);
+//         return nums;
+//     }
+// }
+
 class Solution {
     public int[] sortedSquares(int[] nums) {
+        int[] output = new int[nums.length];
         int i = 0, j = nums.length - 1;
-        for (int k = 0; k < nums.length; k++) {
-            nums[k] = nums[k]*nums[k];
+        int index = nums.length - 1;
+        while(i<=j) {
+            if (Math.abs(nums[i]) > Math.abs(nums[j])) {
+                output[index--] = nums[i]*nums[i];
+                i++;
+            } else {
+                output[index--] = nums[j]*nums[j];
+                j--;
+            }
         }
-        Arrays.sort(nums);
-        return nums;
+        
+        return output;
     }
 }
