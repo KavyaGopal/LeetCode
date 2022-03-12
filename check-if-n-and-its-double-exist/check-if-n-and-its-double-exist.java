@@ -1,0 +1,16 @@
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        
+        HashSet<Integer> set = new HashSet<>();
+        int count = 0;
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == 0)
+                count++;
+            if((set.contains(2*arr[i]) || (set.contains(arr[i]/2) && arr[i]%2 == 0)) ){
+                return true;
+            }
+            set.add(arr[i]);
+        }
+        return false;
+    }
+}
