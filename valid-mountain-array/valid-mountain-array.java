@@ -1,24 +1,26 @@
 class Solution {
     public boolean validMountainArray(int[] arr) {
-        int maxElement = 0, maxIndex = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > maxElement) {
-                maxElement = arr[i];
-                maxIndex = i;
+        int index = 0;
+        while(index<arr.length - 1) {
+            if (arr[index] < arr[index+1]){
+                index++;
+            } else {
+                break;
             }
         }
-        if (maxIndex == 0 || maxIndex == arr.length - 1)
+        if (index == 0 || index == arr.length - 1) {
             return false;
-        int index = 0;
-        while(index < maxIndex) {
-            if(arr[index] >= arr[++index])
-                return false;
         }
-        index = maxIndex;
-        while (index < arr.length - 1) {
-            if (arr[index] <= arr[++index])
+        while(index < arr.length - 1) {
+            if (arr[index] <= arr[index+1]){
                 return false;
+            }
+            index++;
         }
-        return true;
+        System.out.println(index);
+        if (index == arr.length - 1) {
+            return true;
+        }
+        return false;
     }
 }
