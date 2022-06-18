@@ -1,12 +1,10 @@
 class Solution {
     public boolean checkIfExist(int[] arr) {
-        
-        HashSet<Integer> set = new HashSet<>();
-        for(int i = 0; i < arr.length; i++) {
-            if((set.contains(2*arr[i]) || (set.contains(arr[i]/2) && arr[i]%2 == 0)) ){
+        ArrayList<Integer> map = new ArrayList<Integer>();
+        for (int i = 0; i < arr.length; i++) {
+            if(map.contains(arr[i]*2) || (map.contains(arr[i]/2) && arr[i]%2 == 0))
                 return true;
-            }
-            set.add(arr[i]);
+            map.add(arr[i]);
         }
         return false;
     }
