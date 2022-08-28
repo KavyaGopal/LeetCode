@@ -11,12 +11,11 @@ class Solution {
 
     public boolean isHappy(int n) {
         Set<Integer> set = new HashSet<Integer>();
-
-        while(n != 1 && !set.contains(n)) {
-            set.add(n);
-            n = getSquareOfNum(n);
-            
+        int slow = n, fast = getSquareOfNum(n);
+        while(slow != fast) {
+            slow = getSquareOfNum(slow);
+            fast = getSquareOfNum(getSquareOfNum(fast));
         }
-        return n == 1;
+        return slow == 1;
     }
 }
